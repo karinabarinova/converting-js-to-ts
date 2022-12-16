@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Footer = ({ channel: { name: channelName } }) => (
+const Footer: React.FunctionComponent<any> = ( { channel: { name: channelName } } ) => (
   <footer className="pb-6 px-4 flex-none channel-footer">
     <form
       className="flex w-full rounded-lg border-2 border-gray overflow-hidden"
@@ -31,7 +31,7 @@ const Footer = ({ channel: { name: channelName } }) => (
       <input
         id="message-input"
         className="channel-footer__message-input w-full px-4"
-        placeholder={`Send a message to the #${channelName} channel`}
+        placeholder={ `Send a message to the #${ channelName } channel` }
         type="text"
       />
 

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import ChannelLink from './TeamSidebar/ChannelLink';
 
-const TeamSidebar = ({ team }) => {
+const TeamSidebar: React.FunctionComponent<any> = ( { team } ) =>
+{
   return (
     <section className="team-sidebar h-full bg-indigo-800 text-purple-300 flex-none md:w-64 sm:w-48 pb-6 flex flex-col">
       <header className="team-sidebar__header text-white mb-2 mt-3 px-4 flex justify-between">
         <div className="flex-auto">
           <h1 className="team-sidebar__team-name font-semibold text-xl leading-tight mt-2 mb-1 truncate">
-            {team.name}
+            { team.name }
           </h1>
 
           <div className="team-sidebar__current-user-indicator flex items-center mb-6">
@@ -57,13 +58,13 @@ const TeamSidebar = ({ team }) => {
             </svg>
           </button>
         </div>
-        {team.channels.map((ch) => (
+        { team.channels.map( ( ch: any ) => (
           <ChannelLink
-            key={ch.id}
-            to={`/team/${team.id}/channel/${ch.id}`}
-            channel={ch}
+            key={ ch.id }
+            to={ `/team/${ team.id }/channel/${ ch.id }` }
+            channel={ ch }
           />
-        ))}
+        ) ) }
       </nav>
       <footer className="mx-4 text-white">
         <button className="text-white rounded bg-gray-500 hover:bg-red-800 p-2 team-sidebar__logout-button">

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { formatTimestamp } from '../../../utils/date';
 
-const Message = ({ user, date, body }) => (
+const Message: React.FunctionComponent<any> = ( { user, date, body } ) => (
   <div
     className="flex items-start px-6 py-2 text-sm hover-target hover:bg-gray-100 message"
     role="listitem"
@@ -9,8 +9,8 @@ const Message = ({ user, date, body }) => (
     <figure className="w-10 h-10 rounded overflow-hidden mr-3">
       <img
         className="message__user-avatar"
-        src={user.iconUrl}
-        alt={user.name}
+        src={ user.iconUrl }
+        alt={ user.name }
       />
     </figure>
 
@@ -20,16 +20,16 @@ const Message = ({ user, date, body }) => (
           href="#"
           className="message__user-name text-black font-bold no-underline hover:underline"
         >
-          {user.name}
+          { user.name }
         </a>
         <span className="sr-only">at</span>
         <time className="message__timestamp text-gray-500 text-xs font-normal ml-1">
-          {formatTimestamp(date)}
+          { formatTimestamp( date ) }
         </time>
       </h5>
 
       <p className="message__body text-black leading-normal">
-        {body}
+        { body }
       </p>
     </div>
 

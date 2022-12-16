@@ -7,46 +7,47 @@ import ChannelMessage from './Channel/Message';
 import Loading from './Loading';
 
 
-const Channel = ({
+const Channel: React.FunctionComponent<any> = ( {
   channel,
-}) => {
+} ) =>
+{
 
-  const [messages, setMessages] = React.useState();
+  const [ messages, setMessages ] = React.useState<any[]>();
   useAsyncDataEffect(
-    () => getChannelMessages(channel.teamId, channel.id),
+    () => getChannelMessages( channel.teamId, channel.id ),
     {
       setter: setMessages,
       stateName: 'messages',
-      otherStatesToMonitor: [channel],
+      otherStatesToMonitor: [ channel ],
     },
   );
-  if (!messages) return <Loading message="Loading messages" />;
-  if (messages.length === 0) return <Loading message="No messages" />;
+  if ( !messages ) return <Loading message="Loading messages" />;
+  if ( messages.length === 0 ) return <Loading message="No messages" />;
   console.log(
-    `%c CHANNEL render: ${channel.name}`,
+    `%c CHANNEL render: ${ channel.name }`,
     'background-color: purple; color: white',
   );
   return (
     <main className="flex-1 flex flex-col bg-white overflow-hidden channel">
       <ChannelHeader
-        title={channel.name}
-        description={channel.description}
+        title={ channel.name }
+        description={ channel.description }
       />
       <div
         className="py-4 flex-1 overflow-y-scroll channel-messages-list"
         role="list"
       >
-        {messages.map((m) => (
+        { messages.map( ( m ) => (
           <ChannelMessage
-            key={m.id}
-            body={m.body}
-            date={new Date(m.createdAt)}
-            user={m.user}
+            key={ m.id }
+            body={ m.body }
+            date={ new Date( m.createdAt ) }
+            user={ m.user }
           />
-        ))}
+        ) ) }
       </div>
 
-      <ChannelFooter channel={channel} />
+      <ChannelFooter channel={ channel } />
     </main>
   );
 };
