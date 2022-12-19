@@ -3,8 +3,6 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import App from './ui/App';
 
-import { foo } from 'react'
-
 function initializeReactApp ()
 {
   const appContainer = document.getElementById( 'appContainer' );
