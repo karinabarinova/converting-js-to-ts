@@ -6,10 +6,23 @@ import ChannelHeader from './Channel/Header';
 import ChannelMessage from './Channel/Message';
 import Loading from './Loading';
 
+export type Channel = {
+  teamId: string,
+  id: string,
+  name: string,
+  description: string
+}
+
+export type Message = {
+  id: string,
+  user: any,
+  body: string,
+  createdAt: Date
+}
 
 const Channel: React.FunctionComponent<any> = ( {
   channel,
-} ) =>
+}: { channel: Channel } ) =>
 {
 
   const [ messages, setMessages ] = React.useState<any[]>();
@@ -37,7 +50,7 @@ const Channel: React.FunctionComponent<any> = ( {
         className="py-4 flex-1 overflow-y-scroll channel-messages-list"
         role="list"
       >
-        { messages.map( ( m ) => (
+        { messages.map( ( m: Message ) => (
           <ChannelMessage
             key={ m.id }
             body={ m.body }

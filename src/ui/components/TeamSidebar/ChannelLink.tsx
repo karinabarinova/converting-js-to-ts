@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
+import { Channel } from "../Channel";
 
-const ChannelLink: React.FunctionComponent<any> = ( { to, channel } ) =>
+const ChannelLink: React.FunctionComponent<any> = ( { to, channel }: { to: string, channel: Channel } ) =>
 {
   const match = useRouteMatch( to );
   return (
