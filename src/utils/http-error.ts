@@ -6,7 +6,7 @@ export enum HTTPErrorKind
   Redirect = 300,
   Client = 400,
   Server = 500,
-};
+}
 
 /**
  *
