@@ -6,7 +6,7 @@ import HTTPError from './http-error';
  * @param input
  * @param [init]
  */
-async function getJSON ( input, init?: RequestInit )
+async function getJSON ( input: RequestInfo, init?: RequestInit )
 {
   try
   {

@@ -3,41 +3,49 @@ import { useEffect } from 'react';
 import Deferred from './deferred';
 
 /**
- * 
- * @param {() => Promise} getData 
- * @param {{
-    stateName: string;
-    otherStatesToMonitor?: unknown[];
-    setter: (arg: x) => void;
-  }} options 
+ *
+ * @param getData
+ * @param options
   @return {void}
  */
-export function useAsyncDataEffect(getData, options) {
+export function useAsyncDataEffect (
+  getData: () => Promise<any>,
+  options: {
+    stateName: string;
+    otherStatesToMonitor?: unknown[];
+    setter: ( arg: any ) => void;
+  } ): void
+{
   let cancelled = false;
   const { setter, stateName } = options;
-  useEffect(() => {
+  useEffect( () =>
+  {
     const d = new Deferred();
 
     getData()
-      .then((jsonData) => {
-        if (cancelled) return;
-        else d.resolve(jsonData);
-      })
-      .catch(d.reject);
+      .then( ( jsonData ) =>
+      {
+        if ( cancelled ) return;
+        else d.resolve( jsonData );
+      } )
+      .catch( d.reject );
 
     d.promise
-      .then((data) => {
-        if (!cancelled) {
+      .then( ( data: any ) =>
+      {
+        if ( !cancelled )
+        {
           console.info(
             '%c Updating state: ' + stateName,
             'background: green; color: white; display: block;',
           );
-          setter(data);
+          setter( data );
         }
-      })
-      .catch(console.error);
-    return () => {
+      } )
+      .catch( console.error );
+    return () =>
+    {
       cancelled = true;
     };
-  }, [...(options.otherStatesToMonitor || []), stateName]);
+  }, [ ...( options.otherStatesToMonitor || [] ), stateName ] );
 }

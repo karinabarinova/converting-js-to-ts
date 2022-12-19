@@ -1,20 +1,26 @@
-class Deferred {
-  #_promise;
-  #_resolve;
-  #_reject;
-  constructor() {
-    this.#_promise = new Promise((resolve, reject) => {
+class Deferred
+{
+  #_promise: any;
+  #_resolve: any;
+  #_reject: any;
+  constructor ()
+  {
+    this.#_promise = new Promise( ( resolve, reject ) =>
+    {
       this.#_resolve = resolve;
       this.#_reject = reject;
-    });
+    } );
   }
-  get promise() {
+  get promise ()
+  {
     return this.#_promise;
   }
-  get resolve() {
+  get resolve ()
+  {
     return this.#_resolve;
   }
-  get reject() {
+  get reject ()
+  {
     return this.#_reject;
   }
 }
