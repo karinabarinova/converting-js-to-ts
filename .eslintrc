@@ -36,8 +36,9 @@
      * CLIENT SIDE CODE
      */
     {
-      "files": ["src/**/*.{ts,js,jsx,tsx}"],
-
+      "files": [
+        "src/**/*.{ts,js,jsx,tsx}"
+      ],
       "env": {
         "browser": true,
         "es2021": true
@@ -48,15 +49,16 @@
       },
       "extends": [
         "eslint:recommended",
-        "plugin:react/recommended",
-        "prettier/react"
+        "plugin:react/recommended"
       ]
     },
     /**
      * SERVER SIDE CODE
      */
     {
-      "extends": ["plugin:node/recommended"],
+      "extends": [
+        "plugin:node/recommended"
+      ],
       "files": [
         "config/**/*.js",
         "babel.config.js",
@@ -64,15 +66,19 @@
         "postcss.config.js",
         "server/**/*.js"
       ],
-      "env": { "commonjs": true, "node": true }
+      "env": {
+        "commonjs": true,
+        "node": true
+      }
     },
     /**
      * TYPESCRIPT CODE
      */
     {
-      "files": ["{src,tests}/**/*.{ts,tsx}"],
+      "files": [
+        "{src,tests}/**/*.{ts,tsx}"
+      ],
       "extends": [
-        "prettier/@typescript-eslint",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
@@ -90,9 +96,14 @@
      * TESTS
      */
     {
-      "files": ["tests/**/*.{js,jsx,ts,tsx}"],
+      "files": [
+        "tests/**/*.{js,jsx,ts,tsx}"
+      ],
       "extends": [],
-      "env": { "node": true, "jest": true }
+      "env": {
+        "node": true,
+        "jest": true
+      }
     }
   ]
 }
