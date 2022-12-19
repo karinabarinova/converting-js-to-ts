@@ -1,7 +1,7 @@
 import type {ITeam} from "../types";
 import {apiCall} from '../utils/networking';
 
-function isITeam ( arg: any ): arg is ITeam {
+export function isITeam ( arg: any ): arg is ITeam {
   /**
     iconUrl: string;
     name: string;
