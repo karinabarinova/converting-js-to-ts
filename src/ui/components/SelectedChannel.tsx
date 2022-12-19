@@ -1,7 +1,14 @@
 import * as React from 'react';
 import Channel from './Channel';
+import type { IChannel } from "../../types";
+import type { match } from 'react-router-dom';
 
-const SelectedChannel: React.FunctionComponent<any> = ( { match, channels } ) =>
+
+const SelectedChannel: React.FunctionComponent<any> = ( { match, channels }: {
+  match: match<{
+    channelId: string;
+  }>, channels: IChannel[]
+} ) =>
 {
   if ( !channels ) throw new Error( 'no channels' );
   if ( !match ) throw new Error( 'no match' );

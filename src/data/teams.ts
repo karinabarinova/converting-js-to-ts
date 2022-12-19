@@ -1,7 +1,8 @@
+import type { ITeam } from "../types";
 import { apiCall } from '../utils/networking';
 
-let cachedAllTeamsList: Promise<any[]>;
-export async function getAllTeams ()
+let cachedAllTeamsList: Promise<ITeam[]>;
+export async function getAllTeams (): Promise<ITeam[]>
 {
   if ( typeof cachedAllTeamsList === 'undefined' )
     cachedAllTeamsList = apiCall( 'teams' );
@@ -9,9 +10,9 @@ export async function getAllTeams ()
   return await cachedAllTeamsList;
 }
 
-const cachedTeamRecords: Record<string, any> = {};
+const cachedTeamRecords: Record<string, Promise<ITeam>> = {};
 
-export async function getTeamById ( id: string )
+export async function getTeamById ( id: string ): Promise<ITeam>
 {
   let cached = cachedTeamRecords[ id ];
   if ( typeof cached === 'undefined' )

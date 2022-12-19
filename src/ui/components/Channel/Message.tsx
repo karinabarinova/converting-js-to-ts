@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { formatTimestamp } from '../../../utils/date';
+import type { IUser } from "../../../types";
 
-const Message: React.FunctionComponent<any> = ( { user, date, body }: { user: any, date: string | number | Date, body: any } ) => (
+const Message: React.FunctionComponent<any> = ( { user, date, body }: { user: IUser, date: string | number | Date, body: any } ) => (
   <div
     className="flex items-start px-6 py-2 text-sm hover-target hover:bg-gray-100 message"
     role="listitem"
